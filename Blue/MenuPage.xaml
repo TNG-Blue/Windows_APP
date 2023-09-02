@@ -1,0 +1,18 @@
+﻿<Page x:Class="Blue.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Blue"
+      mc:Ignorable="d"
+      Title="MenuPage" Height="700" Width="1200">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <ListView x:Name="MenuOptions" SelectionMode="Single" SelectionChanged="MenuOptions_SelectionChanged">
+            <ListViewItem Content="Option 1" />
+            <ListViewItem Content="Option 2" />
+            <ListViewItem Content="Option 3" />
+            <ListViewItem Content="Option 4" />
+            <ListViewItem Content="Option 5" />
+        </ListView>
+    </Grid>
+</Page>

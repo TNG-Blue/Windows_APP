@@ -1,0 +1,38 @@
+﻿<Page x:Class="Blue.Option1Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="Serial Port Reader" Height="450" Width="800">
+    <Page.Resources>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <TextBox x:Name="TxtData" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Height="400" Margin="15,15,0,0" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="RxtData" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="600" Height="50" Margin="15,20,5,0" FontSize="20"/>
+        <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource RoundedButtonStyle}" Width="150" Height="50" Margin="0,15,5,5" Click="Begin_Serial"/>
+        <Button Content="Reset" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource RoundedButtonStyle}" Width="150" Height="50" Margin="0,90,5,5" Click="Reset_Serial"/>
+        <Button Content="Send" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource RoundedButtonStyle}" Width="50" Height="50" Margin="0,0,185,0" Click="Send_Data"/>
+        <ComboBox x:Name="ComPortsComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="30" Margin="0,200,5,5"/>
+        <ComboBox x:Name="BaudRateComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="20" Margin="0,280,5,5"/>
+    </Grid>
+</Page>
