@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d"
       Title="Option2Page" Height="450" Width="800">
       <Grid>
@@ -11,22 +12,33 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Margin="10">
+            <StackPanel Margin="5">
                 <Button Content="Refresh Data" Click="RefreshButton_Click" Width="120" Height="30" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <DataGrid x:Name="MyDataGrid" Grid.Row="1" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50"/>
-                    <DataGridTextColumn Header="Device ID" Binding="{Binding DeviceID}" Width="100"/>
-                    <DataGridTextColumn Header="Light Intensity" Binding="{Binding LightIntensity}" Width="100"/>
-                    <DataGridTextColumn Header="Temperature" Binding="{Binding Temperature}" Width="100"/>
-                    <DataGridTextColumn Header="Air Humidity" Binding="{Binding AirHumidity}" Width="100"/>
-                    <DataGridTextColumn Header="Soil Humidity" Binding="{Binding SoilHumidity}" Width="100"/>
-                    <DataGridTextColumn Header="Prediction" Binding="{Binding Prediction}" Width="100"/>
-                    <DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp}" Width="100"/>
-                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="150"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <!-- Tạo một Grid để chứa cả DataGrid và PlotView -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/> 
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="MyDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          d:DataContext="{d:DesignData }">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50"/>
+                        <DataGridTextColumn Header="Device ID" Binding="{Binding device_id }" Width="100"/>
+                        <DataGridTextColumn Header="Light Intensity" Binding="{Binding light_intensity}" Width="100"/>
+                        <DataGridTextColumn Header="Temperature" Binding="{Binding temperature}" Width="100"/>
+                        <DataGridTextColumn Header="Air Humidity" Binding="{Binding air_humidity}" Width="100"/>
+                        <DataGridTextColumn Header="Soil Humidity" Binding="{Binding soil_humidity}" Width="100"/>
+                        <DataGridTextColumn Header="Prediction" Binding="{Binding prediction}" Width="100"/>
+                        <DataGridTextColumn Header="Timestamp" Binding="{Binding timestamp}" Width="100"/>
+                        <DataGridTextColumn Header="Note" Binding="{Binding note}" Width="150"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <oxy:PlotView x:Name="SensorDataPlot" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
       </Grid>
 </Page>
